@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,13 +21,73 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IP9-yW-ZNO">
+                                <rect key="frame" x="186.5" y="95" width="37" height="30"/>
+                                <state key="normal" title="show"/>
+                                <connections>
+                                    <action selector="showButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NSY-q4-JET"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Try on button:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ov8-tT-Lmu">
+                                <rect key="frame" x="16" y="99" width="107.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Try on Textfield:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KQN-zL-wwF">
+                                <rect key="frame" x="16" y="154.5" width="122.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ks5-kR-pkO">
+                                <rect key="frame" x="186.5" y="155" width="100" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="V8s-TS-MDx"/>
+                                    <constraint firstAttribute="width" constant="100" id="qZY-h4-sIr"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldEditing:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="0uc-tQ-lFf"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="KVh-sl-QPS"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yzU-Cg-Tey">
+                                <rect key="frame" x="313" y="623" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="downSideButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lhB-ki-U6c"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="IP9-yW-ZNO" firstAttribute="leading" secondItem="Ov8-tT-Lmu" secondAttribute="trailing" constant="63" id="2ZT-ip-r3d"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="yzU-Cg-Tey" secondAttribute="bottom" constant="14" id="4an-xh-lYB"/>
+                            <constraint firstItem="IP9-yW-ZNO" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="31" id="AAx-7P-8r6"/>
+                            <constraint firstItem="Ov8-tT-Lmu" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="35" id="BOE-me-aol"/>
+                            <constraint firstItem="KQN-zL-wwF" firstAttribute="top" secondItem="Ov8-tT-Lmu" secondAttribute="bottom" constant="35" id="F4P-ho-8zR"/>
+                            <constraint firstItem="ks5-kR-pkO" firstAttribute="leading" secondItem="IP9-yW-ZNO" secondAttribute="leading" id="GV6-9c-8V2"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="Ov8-tT-Lmu" secondAttribute="leading" id="Z6Z-92-0tR"/>
+                            <constraint firstItem="ks5-kR-pkO" firstAttribute="top" secondItem="IP9-yW-ZNO" secondAttribute="bottom" constant="30" id="dUb-jb-ST0"/>
+                            <constraint firstItem="yzU-Cg-Tey" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="gXh-aX-iew"/>
+                            <constraint firstItem="KQN-zL-wwF" firstAttribute="leading" secondItem="Ov8-tT-Lmu" secondAttribute="leading" id="ilD-2X-xp8"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="mI9-V7-y0y"/>
+                    <navigationItem key="navigationItem" id="mI9-V7-y0y">
+                        <barButtonItem key="rightBarButtonItem" title="Here" id="zfn-gI-mbn">
+                            <connections>
+                                <action selector="navBarButtonClicked:" destination="BYZ-38-t0r" id="7K0-AP-M1a"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1066" y="591"/>
+            <point key="canvasLocation" x="1064.8" y="590.55472263868069"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aew-hc-8Co">
@@ -44,7 +105,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N0w-w9-SiO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="207" y="591"/>
+            <point key="canvasLocation" x="361" y="591"/>
         </scene>
     </scenes>
 </document>

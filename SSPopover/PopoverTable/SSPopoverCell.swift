@@ -7,11 +7,16 @@
 //
 
 import UIKit
+// cell for SSPopover controller
+class SSPopoverCell {
 
-class PopoverCell {
-
+    // set title for popover cell
     var cellTitle:String!
+    
+    // set image for popover cell
     var leftImageName:String?
+    
+    // set tag for popover cell
     var tagNumber:Int?
     
     init(cellTitle:String,tag:Int? = nil, leftImageName:String?) {

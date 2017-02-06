@@ -12,9 +12,9 @@
 		A2D5E21C1E4883AD00F0577F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2D5E21A1E4883AD00F0577F /* Main.storyboard */; };
 		A2D5E21E1E4883AD00F0577F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2D5E21D1E4883AD00F0577F /* Assets.xcassets */; };
 		A2D5E2211E4883AD00F0577F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2D5E21F1E4883AD00F0577F /* LaunchScreen.storyboard */; };
-		A2D5E22C1E4883C100F0577F /* PopoverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D5E2291E4883C100F0577F /* PopoverCell.swift */; };
-		A2D5E22D1E4883C100F0577F /* PopoverStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2D5E22A1E4883C100F0577F /* PopoverStoryboard.storyboard */; };
-		A2D5E22E1E4883C100F0577F /* PopoverTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D5E22B1E4883C100F0577F /* PopoverTableController.swift */; };
+		A2D5E22C1E4883C100F0577F /* SSPopoverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D5E2291E4883C100F0577F /* SSPopoverCell.swift */; };
+		A2D5E22D1E4883C100F0577F /* SSPopoverStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2D5E22A1E4883C100F0577F /* SSPopoverStoryboard.storyboard */; };
+		A2D5E22E1E4883C100F0577F /* SSPopoverTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D5E22B1E4883C100F0577F /* SSPopoverTableController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,9 +25,9 @@
 		A2D5E21D1E4883AD00F0577F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A2D5E2201E4883AD00F0577F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A2D5E2221E4883AD00F0577F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A2D5E2291E4883C100F0577F /* PopoverCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverCell.swift; sourceTree = "<group>"; };
-		A2D5E22A1E4883C100F0577F /* PopoverStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PopoverStoryboard.storyboard; sourceTree = "<group>"; };
-		A2D5E22B1E4883C100F0577F /* PopoverTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverTableController.swift; sourceTree = "<group>"; };
+		A2D5E2291E4883C100F0577F /* SSPopoverCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSPopoverCell.swift; sourceTree = "<group>"; };
+		A2D5E22A1E4883C100F0577F /* SSPopoverStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SSPopoverStoryboard.storyboard; sourceTree = "<group>"; };
+		A2D5E22B1E4883C100F0577F /* SSPopoverTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSPopoverTableController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,18 +66,19 @@
 				A2D5E21D1E4883AD00F0577F /* Assets.xcassets */,
 				A2D5E21F1E4883AD00F0577F /* LaunchScreen.storyboard */,
 				A2D5E2221E4883AD00F0577F /* Info.plist */,
-				A2D5E2281E4883C100F0577F /* PopoverTable */,
+				A2D5E2281E4883C100F0577F /* SSPopoverView */,
 			);
 			path = SSPopover;
 			sourceTree = "<group>";
 		};
-		A2D5E2281E4883C100F0577F /* PopoverTable */ = {
+		A2D5E2281E4883C100F0577F /* SSPopoverView */ = {
 			isa = PBXGroup;
 			children = (
-				A2D5E2291E4883C100F0577F /* PopoverCell.swift */,
-				A2D5E22A1E4883C100F0577F /* PopoverStoryboard.storyboard */,
-				A2D5E22B1E4883C100F0577F /* PopoverTableController.swift */,
+				A2D5E2291E4883C100F0577F /* SSPopoverCell.swift */,
+				A2D5E22A1E4883C100F0577F /* SSPopoverStoryboard.storyboard */,
+				A2D5E22B1E4883C100F0577F /* SSPopoverTableController.swift */,
 			);
+			name = SSPopoverView;
 			path = PopoverTable;
 			sourceTree = "<group>";
 		};
@@ -142,7 +143,7 @@
 				A2D5E2211E4883AD00F0577F /* LaunchScreen.storyboard in Resources */,
 				A2D5E21E1E4883AD00F0577F /* Assets.xcassets in Resources */,
 				A2D5E21C1E4883AD00F0577F /* Main.storyboard in Resources */,
-				A2D5E22D1E4883C100F0577F /* PopoverStoryboard.storyboard in Resources */,
+				A2D5E22D1E4883C100F0577F /* SSPopoverStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,8 +156,8 @@
 			files = (
 				A2D5E2191E4883AD00F0577F /* ViewController.swift in Sources */,
 				A2D5E2171E4883AD00F0577F /* AppDelegate.swift in Sources */,
-				A2D5E22E1E4883C100F0577F /* PopoverTableController.swift in Sources */,
-				A2D5E22C1E4883C100F0577F /* PopoverCell.swift in Sources */,
+				A2D5E22E1E4883C100F0577F /* SSPopoverTableController.swift in Sources */,
+				A2D5E22C1E4883C100F0577F /* SSPopoverCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +321,7 @@
 				A2D5E2271E4883AD00F0577F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

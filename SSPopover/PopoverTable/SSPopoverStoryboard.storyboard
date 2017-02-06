@@ -12,7 +12,7 @@
         <!--Popover Table View Controller-->
         <scene sceneID="RGi-ZL-O0K">
             <objects>
-                <tableViewController storyboardIdentifier="popoverViewController" id="dBu-F7-dAP" customClass="PopoverTableViewController" customModule="VC_As_Tooltip" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="popoverViewController" id="dBu-F7-dAP" customClass="SSPopoverTableViewController" customModule="SSPopover" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="BJ6-xd-E5X">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -8,15 +8,16 @@
 
 import UIKit
 
-
+// local file variable
 fileprivate var popoverBaseView:Any? = nil
 
 
-
-protocol PopoverProtocol {
+// delegate protocol for SSPopover
+protocol SSPopoverDelegate {
     func selectedRowInDropdownMenu(cellTag:Int, cellTitle:String, withView:Any!)
 }
 
+// MARK:- UIPopoverPresentationControllerDelegate controller
 extension UIViewController :UIPopoverPresentationControllerDelegate {
     
     public func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
@@ -25,8 +26,8 @@ extension UIViewController :UIPopoverPresentationControllerDelegate {
 }
 
 
-
-class MHODropDownMenuList {
+// This class create SSPopover controller
+class SSPopoverMenuList {
     
     weak var delegeterName:UIViewController?
     
@@ -34,12 +35,12 @@ class MHODropDownMenuList {
         self.delegeterName = delegater
     }
    
-    
-    func createController(baseView:Any, cellList:[PopoverCell]!, direction:UIPopoverArrowDirection) -> UIViewController {
+    // create SSPopover
+    func createController(baseView:Any, cellList:[SSPopoverCell]!, direction:UIPopoverArrowDirection) -> UIViewController {
         
         popoverBaseView = baseView
-        let vc = UIStoryboard(name: "PopoverStoryboard", bundle: nil).instantiateViewController(withIdentifier: "popoverViewController") as! PopoverTableViewController
-        vc.delegater = delegeterName as! PopoverProtocol?
+        let vc = UIStoryboard(name: "SSPopoverStoryboard", bundle: nil).instantiateViewController(withIdentifier: "popoverViewController") as! SSPopoverTableViewController
+        vc.delegater = delegeterName as! SSPopoverDelegate?
         vc.cellList = cellList
         
         //popoverContent.delegater = self
@@ -52,6 +53,7 @@ class MHODropDownMenuList {
             // the position of the popover where it's showed
             popover.sourceRect = viewForSource.bounds
             
+            // set direction for popover
             switch direction {
                 
             case UIPopoverArrowDirection.up:
@@ -90,45 +92,48 @@ class MHODropDownMenuList {
 
 
 
-
-class PopoverTableViewController: UITableViewController {
-    var delegater:PopoverProtocol?
-    var cellList:[PopoverCell]!
+// MARK:- SSPopover controller
+class SSPopoverTableViewController: UITableViewController {
+    var delegater:SSPopoverDelegate?
+    var cellList:[SSPopoverCell]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    
-    
-    
+    // set number of section in Popover table
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
+    // set number of row on Popover table
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cellList.count
     }
     
-    
+    // create cell for SSPopover
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         if let imageName = cellList[indexPath.row].leftImageName {
             cell.imageView?.image =  UIImage(named: imageName)
             cell.contentMode = .scaleToFill
         }
+        // set tag for Popover cell
         if let tagIs = cellList[indexPath.row].tagNumber { //
            cell.tag = tagIs
         }else{
            cell.tag = indexPath.row
         }
+        // set title for Popover cell
         cell.textLabel?.text = cellList[indexPath.row].cellTitle
+        // set font
         cell.textLabel?.font = UIFont.systemFont(ofSize: 12)
         cell.preservesSuperviewLayoutMargins = false
         cell.separatorInset = UIEdgeInsets.zero
         return cell
     }
     
+    // select cell from SSPopover cell
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         let cellTitleName = cell?.textLabel?.text
@@ -137,7 +142,7 @@ class PopoverTableViewController: UITableViewController {
         self.dismiss(animated: false, completion: nil)
     }
     
-    
+    // set height for SSPopover cell
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 30
     }

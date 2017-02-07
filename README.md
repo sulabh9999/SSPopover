@@ -2,7 +2,7 @@
 
 ## Usage
 
-To run the example project, clone the repo, drag SSPopover folder in your project.
+To run the example project, clone the repo, drag SSPopoverView folder in your project.
 
 ### Simple
 

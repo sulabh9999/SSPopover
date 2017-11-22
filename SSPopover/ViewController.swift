@@ -13,6 +13,7 @@ class ViewController: UIViewController , UITextFieldDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -24,7 +25,7 @@ class ViewController: UIViewController , UITextFieldDelegate{
     // add SSPopover to navigation bar button
     @IBAction func navBarButtonClicked(_ sender: UIBarButtonItem) {
         let itemList:[String] = ["php","angular","shall","python","java","cpp"]
-        makeDropDownMenuListFor(viewItem: sender.value(forKey: "view")!, withDataList: itemList)
+        makeDropDownMenuListFor(viewItem: sender.value(forKey: "view") as! UIView, withDataList: itemList)
     }
    
     // add SSPopover to show button
@@ -50,34 +51,36 @@ class ViewController: UIViewController , UITextFieldDelegate{
         self.view.endEditing(true)
         return true
     }
+    
+    // make SSPopover
+    func makeDropDownMenuListFor(viewItem: UIView, withDataList:[String], direction: UIPopoverArrowDirection = .any)  {
+        var menuCellList:[SSPopoverCell] = []
+        
+        // create cell for SSPopover
+        for allItem in withDataList {
+            menuCellList.append(SSPopoverCell(cellTitle: allItem, leftImageName: nil))
+        }
+        
+        // create SSPopover controller
+        let ssPopover = SSPopoverMenuList(delegate: self)
+        let controller = ssPopover.createController(baseView: viewItem, cellList: menuCellList, direction: direction)
+        // show SSPopover controller
+        self.present(controller, animated: true, completion: nil)
+    }
 }
 
 
 // MARK:- SSPopover control
-extension ViewController:SSPopoverDelegate {
-
+extension ViewController: SSPopoverDelegate {
+    
     // SSPopover protocol delegate method(necessary to write)
-    func selectedRowInDropdownMenu(cellTag: Int, cellTitle: String, withView: Any!) {
+    func selectedRowInDropdownMenu(cellTag: Int, cellTitle: String?, withView: Any?) {
         // 'cellTag' is to get tag of associated cell
         // 'withView' is cell view
-        print("selected row is:\(cellTitle)")
+        print("selected row is: " + (cellTitle ?? "Not availed"))
     }
     
-    // make SSPopover
-    func makeDropDownMenuListFor(viewItem:Any, withDataList:[String]!, direction: UIPopoverArrowDirection = .any)  {
-        var menuCellList:[SSPopoverCell]? = []
-        
-        // create cell for SSPopover
-        for allItem in withDataList {
-            menuCellList?.append(SSPopoverCell(cellTitle: allItem, leftImageName: nil))
-        }
-        
-        // create SSPopover controller
-        let controller = SSPopoverMenuList(delegater: self).createController(baseView: viewItem, cellList: menuCellList, direction: direction)
-        
-        // show SSPopover controller
-        self.present(controller, animated: true, completion: nil)
-    }
+    
     
 }
 

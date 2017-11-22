@@ -9,12 +9,12 @@
 import UIKit
 
 // local file variable
-fileprivate var popoverBaseView:Any? = nil
+fileprivate var popoverBaseView: Any? = nil
 
 
 // delegate protocol for SSPopover
-protocol SSPopoverDelegate {
-    func selectedRowInDropdownMenu(cellTag:Int, cellTitle:String, withView:Any!)
+protocol SSPopoverDelegate: class {
+    func selectedRowInDropdownMenu(cellTag: Int, cellTitle: String?, withView: Any?)
 }
 
 // MARK:- UIPopoverPresentationControllerDelegate controller
@@ -29,25 +29,25 @@ extension UIViewController :UIPopoverPresentationControllerDelegate {
 // This class create SSPopover controller
 class SSPopoverMenuList {
     
-    weak var delegeterName:UIViewController?
+    weak var delegete: UIViewController?
     
-    init(delegater:UIViewController) {
-        self.delegeterName = delegater
+    init(delegate: UIViewController) {
+        self.delegete = delegate
     }
    
     // create SSPopover
-    func createController(baseView:Any, cellList:[SSPopoverCell]!, direction:UIPopoverArrowDirection) -> UIViewController {
+    func createController(baseView: UIView, cellList:[SSPopoverCell], direction:UIPopoverArrowDirection) -> UIViewController {
         
         popoverBaseView = baseView
         let vc = UIStoryboard(name: "SSPopoverStoryboard", bundle: nil).instantiateViewController(withIdentifier: "popoverViewController") as! SSPopoverTableViewController
-        vc.delegater = delegeterName as! SSPopoverDelegate?
+        vc.delegater = delegete as? SSPopoverDelegate
         vc.cellList = cellList
         
         //popoverContent.delegater = self
         vc.modalPresentationStyle = .popover
         if let popover = vc.popoverPresentationController {
             
-            let viewForSource = baseView as! UIView
+            let viewForSource = baseView
             popover.sourceView = viewForSource
             
             // the position of the popover where it's showed
@@ -81,7 +81,7 @@ class SSPopoverMenuList {
                 vc.preferredContentSize = CGSize(width:150, height:300)
             }
             
-            popover.delegate = delegeterName
+            popover.delegate = delegete
         }
         //isDropdownMenuPresent = true
         return vc
@@ -94,7 +94,9 @@ class SSPopoverMenuList {
 
 // MARK:- SSPopover controller
 class SSPopoverTableViewController: UITableViewController {
-    var delegater:SSPopoverDelegate?
+    
+    weak var delegater: SSPopoverDelegate?
+    
     var cellList:[SSPopoverCell]!
     
     override func viewDidLoad() {
@@ -135,11 +137,11 @@ class SSPopoverTableViewController: UITableViewController {
     
     // select cell from SSPopover cell
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)
-        let cellTitleName = cell?.textLabel?.text
-        let cellTag = cell?.tag
-        delegater?.selectedRowInDropdownMenu(cellTag: cellTag!, cellTitle: cellTitleName!,  withView: popoverBaseView)
-        self.dismiss(animated: false, completion: nil)
+        if let cell = tableView.cellForRow(at: indexPath) {
+            delegater?.selectedRowInDropdownMenu(cellTag: cell.tag, cellTitle: cell.textLabel?.text,  withView: popoverBaseView)
+            self.dismiss(animated: false, completion: nil)
+        }
+        
     }
     
     // set height for SSPopover cell

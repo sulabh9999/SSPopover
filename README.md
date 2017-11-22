@@ -20,8 +20,8 @@ class ViewController: UIViewController {
         }
         
         // create SSPopover controller
-        let ssPopover = SSPopoverMenuList(delegater: self)
-        let controller = ssPopover.createController(baseView: viewItem, cellList: menuCellList, direction: direction)
+        let ssPopover = SSPopoverMenuList(delegate: self)
+        let controller = ssPopover.createController(baseView: viewItem, cellList: menuCellList, direction: .any)
 
         // show SSPopover controller
         self.present(controller, animated: true, completion: nil)
